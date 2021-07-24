@@ -226,7 +226,7 @@ function onBot({ models }) {
 	login({ appState }, (error, api) => {
 		if (error) return logger(JSON.stringify(error), "error");
     app.get("/", (req, res) => {
-    	res.sendFile(join(__dirname, "/home.html"));
+    	res.send("Hi...");
     });
     app.listen(process.env.PORT || 3000, () => logger("Đã mở sever uptime", "[ UPTIME ]"))
     api.setOptions({
