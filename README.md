@@ -186,7 +186,7 @@ Sau đây là các bước cơ bản để có thể cài đặt và vận hành
 1. Windows: [Tutorial install for win 10(WIP)]()
 2. Linux: [Tutorial install for linux/ubuntu(WIP)]()
 3. Android: [Tutorial install for android using termux](https://www.youtube.com/watch?v=xWvzbhA2_jk)
-
+4. Host replit: [Tutorial install for hosting Replit.com](https://youtu.be/6qoiBk54PYA)
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -203,10 +203,3 @@ Sự đóng góp của bạn sẽ khiến cho project ngày càng tốt hơn, c�
 ## License
 
 This project is licensed under the GNU General Public License v3.0 License - see the [LICENSE](LICENSE) file.
-
-<!-- CONTACT -->
-## Contact
-
-CatalizCS - [Facebook](https://facebook.com/CatalizCS) - [GitHub](https://github.com/catalizcs) - miraiv2.official@gmail.com
-
-SpermLord - [GitHub](https://github.com/spermlord) - [Facebook](https://fb.me/MyNameIsSpermLord)
