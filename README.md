@@ -20,7 +20,7 @@
 	<img alt="size" src="https://img.shields.io/github/repo-size/ntkhang03/mirai-features.svg?style=flat-square&label=size">
 	<img alt="code-version" src="https://img.shields.io/badge/dynamic/json?color=red&label=code%20version&prefix=v&query=%24.version&url=https://raw.githubusercontent.com/ntkhang03/mirai-features/features/package.json&style=flat-square">
 	<a href="https://github.com/catalizcs/miraiv2/commits"><img alt="commits" src="https://img.shields.io/github/commit-activity/m/ntkhang03/mirai-features?label=commit&style=flat-square"></a>
-    <img alt="visitors" src="https://visitor-badge.laobi.icu/badge?page_id=ntkhang03.mirai-features">
+        <img alt="visitors" src="https://visitor-badge.laobi.icu/badge?page_id=ntkhang03.mirai-features">
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -32,6 +32,7 @@
         <li><a href="#contributing">Contributing</a></li>
         <li><a href="#license">License</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="# Video hướng dẫn cài đặt">Video install</a></li>
     </ol>
 </details>
 
