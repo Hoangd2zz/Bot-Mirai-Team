@@ -7,7 +7,7 @@
 		"node": "14.x"
 	},
 	"scripts": {
-		"start": "pm2 start pm2.config.js --no-daemon",
+		"start": "node mirai",
 		"login": "node login",
 		"test": "node --trace-warnings --use_strict --async-stack-traces mirai"
 	},
