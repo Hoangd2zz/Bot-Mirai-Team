@@ -32,7 +32,7 @@
         <li><a href="#contributing">Contributing</a></li>
         <li><a href="#license">License</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#Video hướng dẫn cài đặt">Video install</a></li>
+        <li><a href="#video-h%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-c%C3%A0i-%C4%91%E1%BA%B7t">Video install</a></li>
     </ol>
 </details>
 
