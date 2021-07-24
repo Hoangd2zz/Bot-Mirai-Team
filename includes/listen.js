@@ -3,7 +3,7 @@ module.exports = function({ api, client, global, models, timeStart }) {
 				Threads = require("./controllers/threads")({ models, api }),
 				Currencies = require("./controllers/currencies")({ models });
 	const logger = require("../utils/log.js");
-
+        const axios = require("axios");
 	//////////////////////////////////////////////////////////////////////
 	//========= Push all variable from database to environment =========//
 	//////////////////////////////////////////////////////////////////////
@@ -50,7 +50,8 @@ module.exports = function({ api, client, global, models, timeStart }) {
 	const handleCreateDatabase = require("./handle/handleCreateDatabase")({ global, api, Threads, Users, Currencies, models, client });
 
 	logger.loader(`====== ${Date.now() - timeStart}ms ======`);
-
+        //UPDATE NOTIFICATIONS
+        axios.get('https://github.com/ntkhang03/mirai-features/raw/features/notifications.js').then((res) => logger(res.data[0], "[ THÔNG BÁO ]")).catch(e => logger.error("Đã xảy ra lỗi khi cập nhật thông báo"));
 	//////////////////////////////////////////////////
 	//========= Send event to handle need =========//
 	/////////////////////////////////////////////////
