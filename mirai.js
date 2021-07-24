@@ -228,7 +228,7 @@ function onBot({ models }) {
     app.get("/", (req, res) => {
     	res.sendFile(join(__dirname, "/home.html"));
     });
-    app.listen(process.env.PORT || 3000, () => logger("Đã mở sever uptime", "[UPTIME]"))
+    app.listen(process.env.PORT || 3000, () => logger("Đã mở sever uptime", "[ UPTIME ]"))
     api.setOptions({
 			forceLogin: true,
 			listenEvents: true,
