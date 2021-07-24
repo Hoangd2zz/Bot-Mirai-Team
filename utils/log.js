@@ -3,10 +3,10 @@ const chalk = require('chalk');
 module.exports = (data, option) => {
 	switch (option) {
 		case "warn":
-			console.log(chalk.yellow('[ ❕ ] » ') + data);
+			console.log(chalk.yellow('[ WARN ] » ') + data);
 			break;
 		case "error":
-			console.log(chalk.red('[ ❕ ] » ') + data);
+			console.log(chalk.red('[ ERROR ] » ') + data);
 			break;
 		default:
 			console.log(chalk.magenta(`${option} » `) + data);
