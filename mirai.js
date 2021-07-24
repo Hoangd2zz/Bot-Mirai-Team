@@ -1,15 +1,17 @@
-//////////////////////////////////////////////////////
-//========= Require all variable need use =========//
-/////////////////////////////////////////////////////
+//////////////////////////////////////////////
+//===== Require all variable need use ======//
+//////////////////////////////////////////////
 
 const { readdirSync, readFileSync, writeFileSync, existsSync, copySync, unlinkSync } = require("fs-extra");
 const { join, resolve } = require("path");
 const { execSync } = require('child_process');
 const logger = require("./utils/log.js");
-const login = require("fca-unofficial");
+const login = require("fca-xuyen-get");
 const timeStart = Date.now();
-const semver = require('semver');
+const semver = require("semver");
 const axios = require("axios");
+const app = require("express")();
+const chalk = require("chalk");
 
 const client = {
 	commands: new Map(),
@@ -37,28 +39,19 @@ global = {
 	config: []
 };
 
-//////////////////////////////////////////////////////////
-//========= Find and get variable from Config =========//
-/////////////////////////////////////////////////////////
-
+///////////////////////////////////////////////
+//==== Find and get variable from Config ====//
+///////////////////////////////////////////////
 const argv = require('minimist')(process.argv.slice(2)); 
 var configValue;
-
-var indexConfig = argv._.findIndex(function (element)  {  return element.indexOf(".json") !== -1;  }) || 0;
-if (argv._.length != 0) client.dirConfig = join(client.dirMain, argv._[indexConfig]);
-else client.dirConfig = join(client.dirMain, "config.json");
+client.dirConfig = join(client.dirMain, "config.json");
 try {
 	configValue = require(client.dirConfig);
-	logger.loader(`Đã tìm thấy file config: ${argv._[indexConfig] || "config.json"}`);
+	logger.loader(`Đã tìm thấy file config: "config.json"`);
 }
-catch {
-	if (existsSync(client.dirConfig.replace(/\.json/g,"") + ".temp")) {
-		configValue = readFileSync(client.dirConfig.replace(/\.json/g,"") + ".temp");
-		configValue = JSON.parse(configValue);
-		logger.loader(`Đã tìm thấy file config: ${client.dirConfig.replace(/\.json/g,"") + ".temp"}`);
-	}
-	else logger.loader(`Không tìm thấy file config: ${argv._.findIndex[indexConfig] || "config.json"}`, "error");
-}
+catch(e) {
+	logger.loader("Đã xảy ra lỗi khi load file config:\n"+e, "error");
+};
 
 try {
 	for (const [name, value] of Object.entries(configValue)) {
@@ -66,20 +59,20 @@ try {
 	}
 	logger.loader("Config Loaded!");
 }
-catch {
-	return logger.loader("Không thể load config!", "error");
+catch(e) {
+	return logger.loader("Không thể load config!\n "+e, "error");
 }
 
-writeFileSync(client.dirConfig + ".temp", JSON.stringify(configValue, null, 4), 'utf8');
+writeFileSync(client.dirConfig, JSON.stringify(configValue, null, 2), 'utf8');
 
 ////////////////////////////////////////////////
 //========= Check update from Github =========//
 ///////////////////////////////////////////////
 
-axios.get('https://raw.githubusercontent.com/catalizcs/miraiv2/master/package.json').then((res) => {
+axios.get('https://github.com/ntkhang03/mirai-features/raw/features/package.json').then((res) => {
 	logger("Đang kiểm tra cập nhật...", "[ CHECK UPDATE ]");
 	const local = JSON.parse(readFileSync('./package.json')).version;
-	if (semver.lt(local, res.data.version)) logger(`Đã có phiên bản ${res.data.version} để bạn có thể cập nhật!`, "[ CHECK UPDATE ]");
+	if (semver.lt(local, res.data.version)) logger(`Đã có phiên bản mới (${res.data.version}) để bạn có thể cập nhật!`, "[ CHECK UPDATE ]");
 	else logger('Bạn đang sử dụng bản mới nhất!', "[ CHECK UPDATE ]");
 }).catch(err => logger("Đã có lỗi xảy ra khi đang kiểm tra cập nhật cho bạn!", "[ CHECK UPDATE ]"));
 
@@ -213,14 +206,12 @@ for (const file of eventFiles) {
 	catch (error) {
 		logger.loader(`Không thể load module event ${file} với lỗi: ${error.message}`, "error");
 	}
-	(Date.now() - timeStartLoad > 5) ? client.timeLoadModule += `${event.config.name} - ${Date.now() - timeStartLoad}ms\n` : "";
+
 }
 
 logger.loader(`Load thành công: ${client.commands.size} module commands | ${client.events.size} module events`);
-if (global.config.DeveloperMode == true && client.timeLoadModule.length != 0) logger.loader(client.timeLoadModule, "warn");
-writeFileSync(client.dirConfig, JSON.stringify(configValue, null, 4), 'utf8');
-unlinkSync(client.dirConfig + ".temp");
 
+writeFileSync(client.dirConfig, JSON.stringify(configValue, null, 2), 'utf8');
 logger.loader(`=== ${Date.now() - timeStart}ms ===`);
 
 try {
@@ -234,8 +225,11 @@ catch (e) {
 function onBot({ models }) {
 	login({ appState }, (error, api) => {
 		if (error) return logger(JSON.stringify(error), "error");
-
-		api.setOptions({
+    app.get("/", (req, res) => {
+    	res.sendFile(join(__dirname, "/home.html"));
+    });
+    app.listen(process.env.PORT || 3000, () => logger("Đã mở sever uptime", "[UPTIME]"))
+    api.setOptions({
 			forceLogin: true,
 			listenEvents: true,
 			logLevel: "error",
