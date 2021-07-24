@@ -42,7 +42,7 @@ global = {
 ///////////////////////////////////////////////
 //==== Find and get variable from Config ====//
 ///////////////////////////////////////////////
-const argv = require('minimist')(process.argv.slice(2)); 
+
 var configValue;
 client.dirConfig = join(client.dirMain, "config.json");
 try {
