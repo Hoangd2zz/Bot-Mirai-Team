@@ -5,6 +5,7 @@
     "selfListen": false,
     "commandDisabled": [],
     "eventDisabled": [],
+    "EMAIL-NOTIFICATIONS": "",
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
