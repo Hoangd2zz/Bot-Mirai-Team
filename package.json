@@ -1,6 +1,6 @@
 {
-	"name": "miraiBot",
-	"version": "1.1.2",
+	"name": "BotMessenger",
+	"version": "3.0.0",
 	"description": "A simple Facebook Messenger Bot made by me(CatalizCS) and my brother SpermLord.",
 	"main": "mirai.js",
 	"engines": {
