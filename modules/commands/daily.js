@@ -3,7 +3,7 @@ module.exports.config = {
 	version: "0.0.1",
 	hasPermssion: 0,
 	credits: "CatalizCS",
-	description: "Nhận 200 đô mỗi ngày!",
+	description: "Nhận 5000 đô mỗi ngày!",
 	commandCategory: "economy",
 	usages: "daily",
     cooldowns: 5,
