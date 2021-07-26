@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     money: DataTypes.BIGINT,
     exp: DataTypes.BIGINT,
     dailyTime: DataTypes.BIGINT,
+    fishy: DataTypes.BIGINT,
     workTime: DataTypes.BIGINT
   },
   {
