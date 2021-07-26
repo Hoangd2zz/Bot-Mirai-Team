@@ -8,7 +8,7 @@ module.exports.config = {
 	usages: "work",
     cooldowns: 5,
     envConfig: {
-        cooldownTime: 1200000
+        cooldownTime: 60000
     }
 };
 
@@ -43,13 +43,13 @@ module.exports.run = async ({ event, api, Currencies, global }) => {
             "thử thách làm chó trong 24h",
             "đã hoàn thành nhiệm vụ làm người",
             "thi rớt tốt nghiệp",
-            "làm re sờ chym mờ",
+            "làm sờ chym mơ",
             "đi bán hàng online",
             "làm nội trợ cho tổng thống",
-            "đi chơi Yasuo trong rank và gánh team"
+            "đã chơi Yasuo trong rank và gánh team"
         ];
-        const amount = Math.floor(Math.random() * 600);
-        return api.sendMessage(`Bạn ${job[Math.floor(Math.random() * job.length)]} và đã nhận được số tiền là: ${amount} coins`, threadID, async () => {
+        const amount = Math.floor(Math.random() * 1500);
+        return api.sendMessage(`Bạn ${job[Math.floor(Math.random() * job.length)]} và đã nhận được số tiền là: ${amount} đô`, threadID, async () => {
              await Currencies.increaseMoney(event.senderID, parseInt(amount));
              await Currencies.setData(event.senderID, { workTime: Date.now() });
         }, messageID);
