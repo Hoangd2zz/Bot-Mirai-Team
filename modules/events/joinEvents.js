@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "joinEvents",
+	name: "join",
 	eventType: ["log:subscribe"],
 	version: "1.0.0",
 	credits: "SpermLord",
@@ -7,9 +7,10 @@ module.exports.config = {
 	dependencies: ["request", "fs-extra"]
 };
 
-module.exports.run = async function({ api, event, __GLOBAL, client }) {
+module.exports.run = async function({ api, event, global, client }) {
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-		api.changeNickname(`[ ${__GLOBAL.settings.PREFIX} ] • ${(!__GLOBAL.settings.BOTNAME) ? "Kết nối thành công! Chào mừng đến với Bot ngu ngục của Dương Minh Hoàng, chúc mn có giây phút trải nghiệm tuyệt vời <3`, event.threadID);
+		api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Made by CatalizCS and SpermLord" : global.config.BOTNAME}`, event.threadID, api.getCurrentUserID());
+		return api.sendMessage(`Kết nối thành công! Chào mừng đến với Bot ngu ngục của Dương Minh Hoàng, chúc mn có giây phút trải nghiệm tuyệt vời <3`, event.threadID);
 	}
 	else {
 		const { createReadStream, existsSync, mkdirSync } = require("fs-extra");
