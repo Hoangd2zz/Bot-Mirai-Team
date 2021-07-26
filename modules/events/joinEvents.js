@@ -9,8 +9,7 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, __GLOBAL, client }) {
 	if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-		api.changeNickname(`[ ${__GLOBAL.settings.PREFIX} ] • ${(!__GLOBAL.settings.BOTNAME) ? "Made by CatalizCS and SpermLord" : __GLOBAL.settings.BOTNAME}`, event.threadID, api.getCurrentUserID());
-		api.sendMessage(`Connected successfully! This bot was made by CatalizCS and SpermLord\nThank you for using our products, have fun UwU <3`, event.threadID);
+		api.changeNickname(`[ ${__GLOBAL.settings.PREFIX} ] • ${(!__GLOBAL.settings.BOTNAME) ? "Kết nối thành công! Chào mừng đến với Bot ngu ngục của Dương Minh Hoàng, chúc mn có giây phút trải nghiệm tuyệt vời <3`, event.threadID);
 	}
 	else {
 		const { createReadStream, existsSync, mkdirSync } = require("fs-extra");
